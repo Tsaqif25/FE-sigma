@@ -1,6 +1,6 @@
 <template>
   <div> 
-
+    <navbar></navbar> 
     <br><br>
     <p class="judulhome">Welcome, {{ profile.name }}</p>
     <p class="text-center">
@@ -27,6 +27,7 @@ import axios from 'axios';
 import navbar from '../components/navbar.vue';
 
 export default {
+  navbar ,
   data() {
     return {
       profile: {

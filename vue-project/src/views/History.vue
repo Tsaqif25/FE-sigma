@@ -1,19 +1,24 @@
 <template>
-<div class="bungkus">
 
-    <div class="container">
+
+    
         <navbar></navbar>
-
-        <h1>History</h1>
+        <div class="container">
+        <h1 class="mb-3">History</h1>
+      
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                
                 <div class="row flex-nowrap" v-for="(room, index) in history" :key="index">
-                    <div class="card mb-3 mt-4 d-flex flex-row " style="max-width: 540px;">
+                    <div>
+
+                   
+                    <div class=" card1 mb-2 mt-2 d-flex flex-row " style="max-width: 540px;">
 
                         <div class="col-4 d-flex align-items-center">
                             <img :src="'https://tnrxkmc3-8080.asse.devtunnels.ms/upload/inventories/'+ room.inventory.images" style="width: 79px; height: 79px;" class="m-3 ">
                         </div>
-                        <div class="col-8 mr-3">
+                        <div class="col-8 mr-3 p-3">
                             <div class="card-body mr-3">
                                 <!-- <h1 class="title1">{{ room.title }}</h1> -->
                                 <h2 class="card-text">{{ room.description }}</h2>
@@ -34,6 +39,7 @@
         </div>
     </div>
 </div>
+
 </template>
 
 <script>
@@ -81,7 +87,7 @@ export default {
 
 <style scoped>
 
-.card {
+.card1 {
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
 }
 h1 {

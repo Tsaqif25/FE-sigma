@@ -45,14 +45,10 @@
         </div>
     </nav>
 
-    <div class="mb-3">
-        <input type="text" v-model="searchQuery" @input="doSearch" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="search">
 
-      <br>
-        <div v-for="result in results" :key="result.id">
-        <p>{{ result.name }}</p>
-        </div>
-    </div>
+
+      
+    
 </div>
 </template>
 
@@ -63,15 +59,12 @@ export default {
         return {
             isLoggedIn: false,
             img: '' ,
-            search: '',
-      results: []
+      results: [] ,
+      query: '',
+      searchResults: [],
         }
     },
-    watch: {
-    search(value) {
-      this.doSearch(value);
-    }
-  },  
+ 
     async mounted() {
         try {
             const id = this.$route.params.id
@@ -99,11 +92,15 @@ export default {
                 name: 'Login'
             });
         },
-        doSearch(value) {
-  axios
-    .get('https://tnrxkmc3-8080.asse.devtunnels.ms/api/v1/inventories?q=' + value)
-    .then((response) => {this.results = response.data})
-    .catch(e => console.log(e));
+        async search() {
+            try {
+                const response = await this.$axios.get(`https://tnrxkmc3-8080.asse.devtunnels.ms/api/v1/inventories?q=${this.query}`);
+        this.searchResults = response.data;
+                
+            } catch (error) {
+                console.error('Error fetching search results', error);
+            }
+ 
 },
 
 
